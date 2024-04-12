@@ -1,8 +1,10 @@
+import java.util.LinkedList;
+
 /**
  * @author DINESH KUMAR
  */
 public class Tree {
-    class Node {
+    static class Node {
         int data;
         Node left;
         Node right;
@@ -20,7 +22,7 @@ public class Tree {
         root = null;
     }
 
-    void insert(int data) {
+    void insertRec(int data) {
         root = insertRec(root, data);
     }
 
@@ -37,6 +39,52 @@ public class Tree {
         }
 
         return root;
+    }
+
+    public void insert(int value) {
+        if (root == null) {
+            root = new Node(value);
+            return;
+        }
+
+        LinkedList<Node> list = new LinkedList<>();
+        list.add(root);
+
+        while (!list.isEmpty()) {
+            Node current = list.poll();
+
+            if (current.left == null) {
+                current.left = new Node(value);
+                return;
+            } else if (current.right == null) {
+                current.right = new Node(value);
+                return;
+            } else {
+                // Both children are not null, so add them to the list for further exploration
+                list.add(current.left);
+                list.add(current.right);
+            }
+        }
+    }
+
+    Node getParent(Node node) {
+        if (node == null || node == root) {
+            return null;
+        }
+
+        LinkedList<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node current = queue.poll();
+            if (current.left == node || current.right == node) {
+                return current;
+            }
+            if (current.left != null) queue.add(current.left);
+            if (current.right != null) queue.add(current.right);
+        }
+
+        return null;
     }
 
     void printTreein2D() {
@@ -61,19 +109,7 @@ public class Tree {
         printTreein2D(root.left, space);
     }
 
-    public static void main(String[] args) {
-        Tree tree = new Tree();
 
-        tree.insert(50);
-        tree.insert(30);
-        tree.insert(20);
-        tree.insert(40);
-        tree.insert(70);
-        tree.insert(60);
-        tree.insert(80);
-
-        tree.printTreein2D();
-    }
 
 
 }
