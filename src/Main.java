@@ -5,7 +5,7 @@
 
 public class Main {
     public static void main(String[] args) {
-        Heap heap = new Heap("minheap");
+        Heap heap = new Heap("maxheap");
 
         heap.insert(10);
         heap.insert(20);

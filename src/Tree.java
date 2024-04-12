@@ -41,10 +41,10 @@ public class Tree {
         return root;
     }
 
-    public void insert(int value) {
+    public Node inserttoTree(int value) {
         if (root == null) {
             root = new Node(value);
-            return;
+            return root;
         }
 
         LinkedList<Node> list = new LinkedList<>();
@@ -55,16 +55,18 @@ public class Tree {
 
             if (current.left == null) {
                 current.left = new Node(value);
-                return;
+                return current.left;
             } else if (current.right == null) {
                 current.right = new Node(value);
-                return;
+                return current.right;
             } else {
                 // Both children are not null, so add them to the list for further exploration
                 list.add(current.left);
                 list.add(current.right);
             }
         }
+
+        return null;
     }
 
     Node getParent(Node node) {

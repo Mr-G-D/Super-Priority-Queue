@@ -12,9 +12,15 @@ import java.util.LinkedList;
 
     Heap(String heap){
         super();
-        isMinHeap = heap.equalsIgnoreCase(MINHEAP);
+        isMinHeap = !heap.equalsIgnoreCase(MINHEAP);
     }
 
+    public void insert(int data){
+        Node node = inserttoTree(data);
+        if(node != null){
+            heapify(node);
+        }
+    }
 
     public void printBFS() {
         if (root == null) return;
