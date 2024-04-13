@@ -1,20 +1,8 @@
-import java.util.LinkedList;
-
 /**
  * @author DINESH KUMAR
  */
 public class Tree {
-    static class Node {
-        int data;
-        Node left;
-        Node right;
 
-        Node(int data) {
-            this.data = data;
-            left = null;
-            right = null;
-        }
-    }
 
     Node root;
 
@@ -41,17 +29,17 @@ public class Tree {
         return root;
     }
 
-    public Node inserttoTree(int value) {
+    public Node insertToTree(int value) {
         if (root == null) {
             root = new Node(value);
             return root;
         }
 
-        LinkedList<Node> list = new LinkedList<>();
+        DoublyLinkedListQueue list = new DoublyLinkedListQueue();
         list.add(root);
 
-        while (!list.isEmpty()) {
-            Node current = list.poll();
+        while (list.isEmpty()) {
+            Node current = list.pop();
 
             if (current.left == null) {
                 current.left = new Node(value);
@@ -74,11 +62,11 @@ public class Tree {
             return null;
         }
 
-        LinkedList<Node> queue = new LinkedList<>();
+        DoublyLinkedListQueue queue = new DoublyLinkedListQueue();
         queue.add(root);
 
-        while (!queue.isEmpty()) {
-            Node current = queue.poll();
+        while (queue.isEmpty()) {
+            Node current = queue.pop();
             if (current.left == node || current.right == node) {
                 return current;
             }
