@@ -1,4 +1,3 @@
-import java.util.LinkedList;
 
 /**
  * @author DINESH KUMAR
@@ -16,7 +15,7 @@ import java.util.LinkedList;
     }
 
     public void insert(int data){
-        Node node = inserttoTree(data);
+        Node node = insertToTree(data);
         if(node != null){
             heapify(node);
         }
@@ -25,14 +24,14 @@ import java.util.LinkedList;
     public void printBFS() {
         if (root == null) return;
 
-        LinkedList<Node> queue = new LinkedList<>();
+        DoublyLinkedListQueue queue = new DoublyLinkedListQueue();
         queue.add(root);
 
-        while (!queue.isEmpty()) {
-            int levelSize = queue.size();
+        while (queue.isEmpty()) {
+            int levelSize = queue.size;
 
             for (int i = 0; i < levelSize; i++) {
-                Node current = queue.poll();
+                Node current = queue.pop();
                 System.out.print(current.data + " ");
 
                 if (current.left != null)
