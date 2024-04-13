@@ -1,3 +1,5 @@
+package Helpers;
+
 /**
  * @author DINESH KUMAR
  */
@@ -36,7 +38,7 @@ public class DoublyLinkedListQueue {
         size++;
     }
 
-    public Node pop() {
+    Node pop() {
         if (head == null) {
             return null;
         } else {
@@ -52,7 +54,7 @@ public class DoublyLinkedListQueue {
         }
     }
 
-    public boolean isEmpty(){
+    boolean isEmpty(){
         return size > 0;
     }
 }

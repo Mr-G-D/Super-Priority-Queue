@@ -1,3 +1,7 @@
+package Helpers;
+
+import Helpers.DoublyLinkedListQueue;
+
 /**
  * @author DINESH KUMAR
  */
@@ -77,7 +81,7 @@ public class Tree {
         return null;
     }
 
-    void printTreein2D() {
+    public void printTreein2D() {
         printTreein2D(root, 0);
     }
 

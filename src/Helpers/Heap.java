@@ -1,15 +1,18 @@
+package Helpers;
+
+import Helpers.DoublyLinkedListQueue;
 
 /**
  * @author DINESH KUMAR
  */
- class Heap extends Tree{
+ public class Heap extends Tree {
 
      static final String MINHEAP = "minheap";
      static final String MAXHEAP = "maxheap";
     boolean isMinHeap;
 
 
-    Heap(String heap){
+    public Heap(String heap){
         super();
         isMinHeap = !heap.equalsIgnoreCase(MINHEAP);
     }
