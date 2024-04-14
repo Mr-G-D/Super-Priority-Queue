@@ -12,7 +12,7 @@ package Helpers;
 
     public Heap(String heap){
         super();
-        isMinHeap = !heap.equalsIgnoreCase(MINHEAP);
+        isMinHeap = heap.equalsIgnoreCase(MINHEAP);
     }
 
 
@@ -46,7 +46,7 @@ package Helpers;
     }
 
     private boolean isTrue(Node node, Node parent){
-        if(isMinHeap){
+        if(!isMinHeap){
             return node.data.key > parent.data.key;
         } else{
             return node.data.key < parent.data.key;
@@ -65,6 +65,34 @@ package Helpers;
         }
     }
 
-
+//    public Entry pop(){
+//        Node node = root;
+//        Node target = null;
+//
+//        DoublyLinkedListQueue list = new DoublyLinkedListQueue();
+//        list.add(node);
+//        while (!list.isEmpty()) {
+//            Node current = list.pop();
+//
+//            if (current.left != null || current.right != null) {
+//                if(current.left != null )
+//                    list.add(current.left);
+//                if(current.right != null)
+//                    list.add(current.right);
+//            }else if(list.isEmpty()){
+//                target = current;
+//            }
+//        }
+//        Entry temp = node.data;
+//        node.data = target.data;
+//        target.data = temp;
+//        Node targetParent = getParent(target);
+//        if(targetParent.right != null){
+//            targetParent.right = null;
+//        }else {
+//            targetParent.left = null;
+//        }
+//        return delete(node.data);
+//    }
 
 }
