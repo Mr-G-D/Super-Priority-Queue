@@ -9,37 +9,39 @@ public class Tree {
 
 
     protected Node root;
+    protected int size;
 
     public Tree() {
-        root = null;
+        root = null; size = 0;
     }
 
-    protected void setTree(Node node){
-        root = node;
-    }
+//    protected void setTree(Node node){
+//        root = node;
+//    }
 
-    void insertRec(Entry data) {
-        root = insertRec(root, data);
-    }
-
-
-    Node insertRec(Node root, Entry data) {
-        if (root == null) {
-            root = new Node(data);
-            return root;
-        }
-
-        if (data.key < root.data.key) {
-            root.left = insertRec(root.left, data);
-        } else if (data.key > root.data.key) {
-            root.right = insertRec(root.right, data);
-        }
-
-        return root;
-    }
+//    void insertRec(Entry data) {
+//        root = insertRec(root, data);
+//    }
+//
+//
+//    Node insertRec(Node root, Entry data) {
+//        if (root == null) {
+//            root = new Node(data);
+//            return root;
+//        }
+//
+//        if (data.key < root.data.key) {
+//            root.left = insertRec(root.left, data);
+//        } else if (data.key > root.data.key) {
+//            root.right = insertRec(root.right, data);
+//        }
+//
+//        return root;
+//    }
 
     public Node insertToTree(Entry value) {
         if (root == null) {
+            size++;
             root = new Node(value);
             return root;
         }
@@ -51,9 +53,11 @@ public class Tree {
             Node current = list.pop();
 
             if (current.left == null) {
+                size++;
                 current.left = new Node(value);
                 return current.left;
             } else if (current.right == null) {
+                size++;
                 current.right = new Node(value);
                 return current.right;
             } else {

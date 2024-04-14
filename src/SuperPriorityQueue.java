@@ -55,4 +55,8 @@ public class SuperPriorityQueue extends Heap {
     public boolean isEmpty(){
         return root == null;
     }
+
+    public int size(){
+        return size;
+    }
 }
