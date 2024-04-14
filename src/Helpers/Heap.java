@@ -1,21 +1,20 @@
 package Helpers;
 
-import Helpers.DoublyLinkedListQueue;
-
 /**
  * @author DINESH KUMAR
  */
  public class Heap extends Tree {
 
-     static final String MINHEAP = "minheap";
-     static final String MAXHEAP = "maxheap";
-    boolean isMinHeap;
+     protected static final String MINHEAP = "minheap";
+     protected static final String MAXHEAP = "maxheap";
+    protected boolean isMinHeap;
 
 
     public Heap(String heap){
         super();
         isMinHeap = !heap.equalsIgnoreCase(MINHEAP);
     }
+
 
     public void insert(int data){
         Node node = insertToTree(data);
@@ -30,7 +29,7 @@ import Helpers.DoublyLinkedListQueue;
         DoublyLinkedListQueue queue = new DoublyLinkedListQueue();
         queue.add(root);
 
-        while (queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             int levelSize = queue.size;
 
             for (int i = 0; i < levelSize; i++) {

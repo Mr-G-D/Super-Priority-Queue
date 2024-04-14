@@ -21,7 +21,7 @@ public class DoublyLinkedListQueue {
     ListNode tail;
     int size;
 
-    DoublyLinkedListQueue() {
+    public DoublyLinkedListQueue() {
         head = null;
         tail = null;
     }
@@ -38,7 +38,7 @@ public class DoublyLinkedListQueue {
         size++;
     }
 
-    Node pop() {
+    public Node pop() {
         if (head == null) {
             return null;
         } else {
@@ -46,6 +46,7 @@ public class DoublyLinkedListQueue {
             if(head == tail){
                 head = null;
                 tail = null;
+                size--;
                 return temp.data;
             }
             head = head.next;
@@ -54,7 +55,7 @@ public class DoublyLinkedListQueue {
         }
     }
 
-    boolean isEmpty(){
-        return size > 0;
+    public boolean isEmpty(){
+        return size <= 0;
     }
 }

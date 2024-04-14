@@ -8,15 +8,20 @@ import Helpers.DoublyLinkedListQueue;
 public class Tree {
 
 
-    Node root;
+    protected Node root;
 
     Tree() {
         root = null;
     }
 
+    protected void setTree(Node node){
+        root = node;
+    }
+
     void insertRec(int data) {
         root = insertRec(root, data);
     }
+
 
     Node insertRec(Node root, int data) {
         if (root == null) {
@@ -42,7 +47,7 @@ public class Tree {
         DoublyLinkedListQueue list = new DoublyLinkedListQueue();
         list.add(root);
 
-        while (list.isEmpty()) {
+        while (!list.isEmpty()) {
             Node current = list.pop();
 
             if (current.left == null) {
@@ -69,7 +74,7 @@ public class Tree {
         DoublyLinkedListQueue queue = new DoublyLinkedListQueue();
         queue.add(root);
 
-        while (queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             Node current = queue.pop();
             if (current.left == node || current.right == node) {
                 return current;

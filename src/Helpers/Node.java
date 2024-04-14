@@ -6,9 +6,9 @@ package Helpers;
 
 public class Node {
 
-    int data;
-    Node left;
-    Node right;
+    public int data;
+    public Node left;
+    public Node right;
 
 
     Node(int data) {

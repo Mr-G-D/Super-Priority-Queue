@@ -6,7 +6,7 @@ import Helpers.*;
 
 public class Main {
     public static void main(String[] args) {
-        Heap heap = new Heap("maxheap");
+        SuperPriorityQueue heap = new SuperPriorityQueue("maxheap");
 
         heap.insert(10);
         heap.insert(20);
@@ -18,6 +18,9 @@ public class Main {
         heap.insert(70);
         heap.insert(80);
 
+        heap.printTreein2D();
+        System.out.println("-----------------------");
+        heap.toggle();
         heap.printTreein2D();
     }
 }
