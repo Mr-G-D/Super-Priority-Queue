@@ -47,4 +47,8 @@ public class SuperPriorityQueue extends Heap {
     public Entry top(){
         return root.data;
     }
+
+    public void state(){
+        System.out.println(isMinHeap? "Min Heap":"Max Heap");
+    }
 }
