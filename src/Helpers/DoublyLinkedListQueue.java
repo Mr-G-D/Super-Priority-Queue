@@ -28,13 +28,15 @@ public class DoublyLinkedListQueue {
 
     public void add(Node node1) {
         ListNode node = new ListNode(node1);
-        if (tail == null) {
+        if (head == null && tail == null) {
             head = node;
+            tail = head;
         } else {
             tail.next = node;
             node.prev = tail;
+            head.prev = null;
+            tail = node;
         }
-        tail = node;
         size++;
     }
 
