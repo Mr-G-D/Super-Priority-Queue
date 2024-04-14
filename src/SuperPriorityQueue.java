@@ -43,4 +43,8 @@ public class SuperPriorityQueue extends Heap {
 
         return entry;
     }
+
+    public Entry top(){
+        return root.data;
+    }
 }
