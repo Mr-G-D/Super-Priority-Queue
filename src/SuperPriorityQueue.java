@@ -1,6 +1,4 @@
-import Helpers.DoublyLinkedListQueue;
-import Helpers.Heap;
-import Helpers.Node;
+import Helpers.*;
 
 /**
  * @author DINESH KUMAR
@@ -33,4 +31,8 @@ public class SuperPriorityQueue extends Heap {
             }
         }
     }
+
+//    public Entry removeTop(){
+//        return pop();
+//    }
 }

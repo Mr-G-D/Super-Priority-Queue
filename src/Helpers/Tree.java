@@ -10,7 +10,7 @@ public class Tree {
 
     protected Node root;
 
-    Tree() {
+    public Tree() {
         root = null;
     }
 
@@ -108,7 +108,86 @@ public class Tree {
         printTreein2D(root.left, space);
     }
 
+    private void swap(Node n1, Node n2){
+        Entry entry = n1.data;
+        n1.data = n2.data;
+        n2.data = entry;
+
+    }
 
 
+//    private Entry deleteRec(Node node, Entry entry){
+//        if(node.data.key == entry.key){
+//            Node curr = node;
+//            while (curr != null){
+//                if(curr.right != null){
+//                    swap(curr, curr.right);
+//                    curr = curr.right;
+//                }else if(curr.left != null){
+//                    swap(curr, curr.left);
+//                    curr = curr.left;
+//                }else{
+//                    Node parent = getParent(curr);
+//                    if(parent != null){
+//                        if(parent.right != null){
+//                            parent.right = null;
+//                        }else {
+//                            parent.left = null;
+//                        }
+//                    }
+//
+//                }
+//            }
+//            return node.data;
+//        }else{
+//            if(node.left != null) {
+//                Entry temp =  deleteRec(node.left, entry);
+//            }if (node.right != null){
+//                return deleteRec(node.right, entry);
+//            }
+//        }
+//    }
+    public Node delete(Node root, Entry entry) {
+        int key = entry.key;
+        if (root == null)
+            return null;
+
+        if (root.data.key > key) {
+            root.left = delete(root.left, entry);
+            return root;
+        } else if (root.data.key < key) {
+            root.right = delete(root.right, entry);
+            return root;
+        }
+
+        if (root.left == null) {
+            return root.right;
+        } else if (root.right == null) {
+            Node temp = root.left;
+            return temp;
+        } else {
+
+            Node succParent = root;
+
+            Node succ = root.right;
+            while (succ.left != null) {
+                succParent = succ;
+                succ = succ.left;
+            }
+
+            if (succParent != root)
+                succParent.left = succ.right;
+            else
+                succParent.right = succ.right;
+
+            root.data.key = succ.data.key;
+
+            return root;
+        }
+    }
+
+    public Node delete(Entry entry){
+        return delete(root, entry);
+    }
 
 }
