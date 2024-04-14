@@ -6,18 +6,31 @@ import Helpers.*;
 
 public class Main {
     public static void main(String[] args) {
-        SuperPriorityQueue heap = new SuperPriorityQueue("maxheap");
+        SuperPriorityQueue heap = new SuperPriorityQueue("minheap");
 
         heap.insert(new Entry(10, 10));
         heap.insert(new Entry(20, 10));
+        heap.insert(new Entry(30, 10));
+        heap.insert(new Entry(40, 10));
         heap.insert(new Entry(50, 10));
-        heap.insert(new Entry(30, 10));
-        heap.insert(new Entry(60, 10));
-        heap.insert(new Entry(30, 10));
 
         heap.printTreein2D();
-        System.out.println("-----------------------");
-        heap.toggle();
+        System.out.println("_______________________________________");
+        heap.insert(60, 10);
+        heap.insert(70, 10);
+        heap.insert(7, 10);
         heap.printTreein2D();
+
+//        Tree tree = new Tree();
+//
+//        tree.insertToTree(new Entry(10, 10));
+//        tree.insertToTree(new Entry(20, 10));
+//        tree.insertToTree(new Entry(30, 10));
+//        tree.insertToTree(new Entry(40, 10));
+//        tree.insertToTree(new Entry(50, 10));
+//        tree.insertToTree(new Entry(60, 10));
+//
+//        System.out.println(tree.delete(new Entry(20, 10)).data.key);
+//        tree.printTreein2D();
     }
 }

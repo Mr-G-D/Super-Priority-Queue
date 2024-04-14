@@ -35,4 +35,12 @@ public class SuperPriorityQueue extends Heap {
 //    public Entry removeTop(){
 //        return pop();
 //    }
+
+    public Entry insert(int key, int val){
+        Entry entry = new Entry(key, val);
+
+        insert(entry);
+
+        return entry;
+    }
 }
