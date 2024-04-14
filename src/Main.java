@@ -8,15 +8,12 @@ public class Main {
     public static void main(String[] args) {
         SuperPriorityQueue heap = new SuperPriorityQueue("maxheap");
 
-        heap.insert(10);
-        heap.insert(20);
-        heap.insert(30);
-        heap.insert(40);
-        heap.insert(50);
-        heap.insert(5);
-        heap.insert(60);
-        heap.insert(70);
-        heap.insert(80);
+        heap.insert(new Entry(10, 10));
+        heap.insert(new Entry(20, 10));
+        heap.insert(new Entry(50, 10));
+        heap.insert(new Entry(30, 10));
+        heap.insert(new Entry(60, 10));
+        heap.insert(new Entry(30, 10));
 
         heap.printTreein2D();
         System.out.println("-----------------------");

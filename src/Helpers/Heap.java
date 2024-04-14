@@ -16,7 +16,7 @@ package Helpers;
     }
 
 
-    public void insert(int data){
+    public void insert(Entry data){
         Node node = insertToTree(data);
         if(node != null){
             heapify(node);
@@ -47,16 +47,16 @@ package Helpers;
 
     private boolean isTrue(Node node, Node parent){
         if(isMinHeap){
-            return node.data > parent.data;
+            return node.data.key > parent.data.key;
         } else{
-            return node.data < parent.data;
+            return node.data.key < parent.data.key;
         }
     }
 
     private void heapify(Node node) {
         Node parent = getParent(node);
         while (parent != null && isTrue(node, parent)) {
-            int temp = node.data;
+            Entry temp = node.data;
             node.data = parent.data;
             parent.data = temp;
 

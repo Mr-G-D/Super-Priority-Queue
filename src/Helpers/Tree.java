@@ -18,27 +18,27 @@ public class Tree {
         root = node;
     }
 
-    void insertRec(int data) {
+    void insertRec(Entry data) {
         root = insertRec(root, data);
     }
 
 
-    Node insertRec(Node root, int data) {
+    Node insertRec(Node root, Entry data) {
         if (root == null) {
             root = new Node(data);
             return root;
         }
 
-        if (data < root.data) {
+        if (data.key < root.data.key) {
             root.left = insertRec(root.left, data);
-        } else if (data > root.data) {
+        } else if (data.key > root.data.key) {
             root.right = insertRec(root.right, data);
         }
 
         return root;
     }
 
-    public Node insertToTree(int value) {
+    public Node insertToTree(Entry value) {
         if (root == null) {
             root = new Node(value);
             return root;
@@ -103,7 +103,7 @@ public class Tree {
         for (int i = 10; i < space; i++) {
             System.out.print(" ");
         }
-        System.out.print(root.data + "\n");
+        System.out.print(root.data.key + "\n");
 
         printTreein2D(root.left, space);
     }

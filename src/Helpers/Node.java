@@ -4,14 +4,16 @@ package Helpers;
  * @author DINESH KUMAR
  */
 
+
 public class Node {
 
-    public int data;
+
+    public Entry data;
     public Node left;
     public Node right;
 
 
-    Node(int data) {
+    Node(Entry data) {
         this.data = data;
         left = null;
         right = null;

@@ -8,17 +8,6 @@ import Helpers.Node;
 
 public class SuperPriorityQueue extends Heap {
 
-    class Entry{
-
-        int key;
-        int val;
-
-        Entry(int k, int v){
-            key = k;
-            val = v;
-        }
-    }
-
 
     SuperPriorityQueue(String str){
         super(str);
