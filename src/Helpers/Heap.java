@@ -48,7 +48,7 @@ package Helpers;
 
             for (int i = 0; i < levelSize; i++) {
                 Node current = queue.pop();
-                System.out.print(current.data + " ");
+                System.out.print("(" + current.data.key +" , " + current.data.val + ") ");
 
                 if (current.left != null)
                     queue.add(current.left);
@@ -187,24 +187,28 @@ package Helpers;
         Node src = findLastNode();
 
         Node target = find(entry);
-        if(isMinHeap){
-            target.data.key = Integer.MIN_VALUE;
-        }else{
-            target.data.key = Integer.MAX_VALUE;
-        }
-        heapify(target);
-
-        root.data = src.data;
-
-        heapifyDownFromRoot();
-
-        Node parent = getParent(src);
-        if(parent != null){
-            if(parent.right != null && equals(src.data, parent.right.data)){
-                parent.right = null;
-            }else if(equals(src.data, parent.left.data)){
-                parent.left = null;
+        if(target!=null) {
+            if (isMinHeap) {
+                target.data.key = Integer.MIN_VALUE;
+            } else {
+                target.data.key = Integer.MAX_VALUE;
             }
+            heapify(target);
+
+            root.data = src.data;
+
+            heapifyDownFromRoot();
+
+            Node parent = getParent(src);
+            if (parent != null) {
+                if (parent.right != null && equals(src.data, parent.right.data)) {
+                    parent.right = null;
+                } else if (equals(src.data, parent.left.data)) {
+                    parent.left = null;
+                }
+            }
+        } else {
+            System.out.println("Entry does not exist in the heap");
         }
 
 

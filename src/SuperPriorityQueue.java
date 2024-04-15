@@ -102,11 +102,11 @@ public class SuperPriorityQueue extends Heap {
     /**
      * replace the value of the Entry
      * @param entry Entry whose value is to be replaced
-     * @param key Value to be replaced
+     * @param val Value to be replaced
      * @return old Value
      */
-    public int replaceVal(Entry entry, int key){
-        return replaceValfromHeap(entry, key);
+    public int replaceVal(Entry entry, int val){
+        return replaceValfromHeap(entry, val);
     }
 
     /**
