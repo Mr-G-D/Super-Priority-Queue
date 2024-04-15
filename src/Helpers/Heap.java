@@ -95,11 +95,20 @@ package Helpers;
 //        return delete(node.data);
 //    }
 
-    protected int replaceKey(Entry entry, int key){
+    protected int replaceKeyfromHeap(Entry entry, int key){
         Node node = find(entry);
         if(node != null){
             int temp = node.data.key;
             node.data.key = key;
+            return temp;
+        }
+        return 0;
+    }
+    protected int replaceValfromHeap(Entry entry, int val){
+        Node node = find(entry);
+        if(node != null){
+            int temp = node.data.val;
+            node.data.val = val;
             return temp;
         }
         return 0;

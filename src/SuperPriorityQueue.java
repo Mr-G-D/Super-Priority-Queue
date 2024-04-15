@@ -85,9 +85,13 @@ public class SuperPriorityQueue extends Heap {
         }
     }
 
-    public int replace(Entry entry, int key){
-        int res = replaceKey(entry, key);
+    public int replaceKey(Entry entry, int key){
+        int res = replaceKeyfromHeap(entry, key);
         heapifyDownFromRoot();
         return res;
+    }
+    public int replaceVal(Entry entry, int key){
+        //        heapifyDownFromRoot();
+        return replaceValfromHeap(entry, key);
     }
 }

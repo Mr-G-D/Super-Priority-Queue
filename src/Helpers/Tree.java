@@ -107,7 +107,7 @@ public class Tree {
         for (int i = 10; i < space; i++) {
             System.out.print(" ");
         }
-        System.out.print(root.data.key + "\n");
+        System.out.print(root.data.key + " " + root.data.val + "\n");
 
         printTreein2D(root.left, space);
     }
