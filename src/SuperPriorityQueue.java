@@ -30,6 +30,7 @@ public class SuperPriorityQueue extends Heap {
                 queue.add(curr.right);
             }
         }
+//        heapifyDownFromRoot();
     }
 
 //    public Entry removeTop(){

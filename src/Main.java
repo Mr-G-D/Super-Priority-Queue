@@ -15,10 +15,11 @@ public class Main {
         heap.insert(new Entry(50, 10));
 
         heap.printTreein2D();
-        System.out.println(heap.size());
+//        System.out.println(heap.size());
+        heap.toggle();
         System.out.println("_______________________________________");
-        heap.replace(new Entry(10, 10), 100);
-        System.out.println(heap.size());
+//        heap.replace(new Entry(10, 10), 100);
+//        System.out.println(heap.size());
         heap.printTreein2D();
 
 //        Tree tree = new Tree();
