@@ -194,4 +194,31 @@ public class Tree {
         return delete(root, entry);
     }
 
+    private Node findNode(Node node, Entry entry){
+        if(node == null || equals(node.data, entry)){
+            return node;
+        }
+
+        Node left = findNode(node.left, entry);
+        if(left != null){
+            return left;
+        }
+
+        Node right = findNode(node.right, entry);
+        if(right != null){
+            return right;
+        }
+
+        return null;
+
+    }
+
+    private boolean equals(Entry e1, Entry e2){
+        return (e1.key == e2.key && e1.val == e2.val);
+    }
+
+    protected Node find( Entry entry){
+        return findNode(root, entry);
+    }
+
 }

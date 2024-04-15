@@ -59,4 +59,33 @@ public class SuperPriorityQueue extends Heap {
     public int size(){
         return size;
     }
+    public void heapifyDownFromRoot() {
+        heapifyDownFrom(root);
+    }
+
+    private void heapifyDownFrom(Node root) {
+        Node current = root;
+
+        while (current != null) {
+            Node smallest = current;
+            if (current.left != null && current.left.data.key < smallest.data.key)
+                smallest = current.left;
+            if (current.right != null && current.right.data.key < smallest.data.key)
+                smallest = current.right;
+
+            if (smallest.data.key == current.data.key)
+                break;
+
+            Entry temp = current.data;
+            current.data = smallest.data;
+            smallest.data = temp;
+
+            current = smallest;
+        }
+    }
+
+    public void replace(Entry entry, int key){
+        replaceKey(entry, key);
+        heapifyDownFromRoot();
+    }
 }
