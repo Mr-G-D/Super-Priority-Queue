@@ -95,13 +95,14 @@ package Helpers;
 //        return delete(node.data);
 //    }
 
-    protected void replaceKey(Entry entry, int key){
+    protected int replaceKey(Entry entry, int key){
         Node node = find(entry);
         if(node != null){
+            int temp = node.data.key;
             node.data.key = key;
-
+            return temp;
         }
-
+        return 0;
     }
 
 }

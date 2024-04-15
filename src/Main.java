@@ -18,7 +18,8 @@ public class Main {
 //        System.out.println(heap.size());
         heap.toggle();
         System.out.println("_______________________________________");
-//        heap.replace(new Entry(10, 10), 100);
+        int temp = heap.replace(new Entry(50, 10), 100);
+        System.out.println(temp);
 //        System.out.println(heap.size());
         heap.printTreein2D();
 
