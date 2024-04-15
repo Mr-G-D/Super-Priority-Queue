@@ -73,9 +73,9 @@ package Helpers;
 
         while (current != null) {
             Node smallest = current;
-            if (current.left != null && current.left.data.key < smallest.data.key)
+            if (current.left != null && isTrue(current.left, smallest))
                 smallest = current.left;
-            if (current.right != null && current.right.data.key < smallest.data.key)
+            if (current.right != null && isTrue(current.right, smallest))
                 smallest = current.right;
 
             if (smallest.data.key == current.data.key)
@@ -173,9 +173,16 @@ package Helpers;
     protected int replaceKeyfromHeap(Entry entry, int key){
         Node node = find(entry);
         if(node != null){
+            if(isMinHeap){
+                node.data.key = Integer.MIN_VALUE;
+            }else{
+                node.data.key = Integer.MAX_VALUE;
+            }
+            heapify(node);
             int temp = node.data.key;
-            node.data.key = key;
-            return temp;
+            root.data.key = key;
+            heapifyDownFromRoot();
+            return entry.key;
         }
         return 0;
     }

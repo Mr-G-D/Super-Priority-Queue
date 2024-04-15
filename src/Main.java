@@ -21,8 +21,8 @@ public class Main {
 
         heap.printTreein2D();
         System.out.println("_______________________________________");
-        Entry temp = heap.removeNode(new Entry(40, 10));
-        System.out.println(temp.key);
+        int temp = heap.replaceKey(new Entry(40, 10), 400);
+        System.out.println(temp);
         heap.printTreein2D();
 
 

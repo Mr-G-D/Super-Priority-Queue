@@ -30,12 +30,8 @@ public class SuperPriorityQueue extends Heap {
                 queue.add(curr.right);
             }
         }
-//        heapifyDownFromRoot();
     }
 
-//    public Entry removeTop(){
-//        return pop();
-//    }
 
     public Entry insert(int key, int val){
         Entry entry = new Entry(key, val);
