@@ -13,26 +13,18 @@ public class Main {
         heap.insert(new Entry(30, 10));
         heap.insert(new Entry(40, 10));
         heap.insert(new Entry(50, 10));
+        heap.insert(new Entry(60, 10));
+        heap.insert(new Entry(70, 10));
+        heap.insert(new Entry(80, 10));
+        heap.insert(new Entry(90, 10));
+        heap.insert(new Entry(100, 10));
 
         heap.printTreein2D();
-//        System.out.println(heap.size());
-//        heap.toggle();
         System.out.println("_______________________________________");
-        int temp = heap.replaceVal(new Entry(50, 10), 50);
-        System.out.println(temp);
-//        System.out.println(heap.size());
+        Entry temp = heap.removeNode(new Entry(40, 10));
+        System.out.println(temp.key);
         heap.printTreein2D();
 
-//        Tree tree = new Tree();
-//
-//        tree.insertToTree(new Entry(10, 10));
-//        tree.insertToTree(new Entry(20, 10));
-//        tree.insertToTree(new Entry(30, 10));
-//        tree.insertToTree(new Entry(40, 10));
-//        tree.insertToTree(new Entry(50, 10));
-//        tree.insertToTree(new Entry(60, 10));
-//
-//        System.out.println(tree.delete(new Entry(20, 10)).data.key);
-//        tree.printTreein2D();
+
     }
 }

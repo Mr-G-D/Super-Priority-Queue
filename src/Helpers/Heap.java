@@ -64,6 +64,30 @@ package Helpers;
             parent = getParent(node);
         }
     }
+    public void heapifyDownFromRoot() {
+        heapifyDownFrom(root);
+    }
+
+    private void heapifyDownFrom(Node root) {
+        Node current = root;
+
+        while (current != null) {
+            Node smallest = current;
+            if (current.left != null && current.left.data.key < smallest.data.key)
+                smallest = current.left;
+            if (current.right != null && current.right.data.key < smallest.data.key)
+                smallest = current.right;
+
+            if (smallest.data.key == current.data.key)
+                break;
+
+            Entry temp = current.data;
+            current.data = smallest.data;
+            smallest.data = temp;
+
+            current = smallest;
+        }
+    }
 
 //    public Entry pop(){
 //        Node node = root;
@@ -94,6 +118,57 @@ package Helpers;
 //        }
 //        return delete(node.data);
 //    }
+
+    private Node findLastNode(){
+        if (root == null) return null;
+
+        DoublyLinkedListQueue list = new DoublyLinkedListQueue();
+        list.add(root);
+
+        while (!list.isEmpty()) {
+            Node current = list.pop();
+
+            if(list.isEmpty() && current.left == null && current.right == null){
+                return current;
+            }
+
+            if (current.left != null) {
+                list.add(current.left);
+            } if (current.right != null) {
+                list.add(current.right);
+            }
+        }
+        return root.left;
+
+    }
+    public Entry removeNode(Entry entry){
+        Node src = findLastNode();
+
+        Node target = find(entry);
+        if(isMinHeap){
+            target.data.key = Integer.MIN_VALUE;
+        }else{
+            target.data.key = Integer.MAX_VALUE;
+        }
+        heapify(target);
+
+        root.data = src.data;
+
+        heapifyDownFromRoot();
+
+        Node parent = getParent(src);
+        if(parent != null){
+            if(parent.right != null && equals(src.data, parent.right.data)){
+                parent.right = null;
+            }else if(equals(src.data, parent.left.data)){
+                parent.left = null;
+            }
+        }
+
+
+
+        return entry;
+    }
 
     protected int replaceKeyfromHeap(Entry entry, int key){
         Node node = find(entry);

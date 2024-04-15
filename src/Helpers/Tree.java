@@ -15,29 +15,6 @@ public class Tree {
         root = null; size = 0;
     }
 
-//    protected void setTree(Node node){
-//        root = node;
-//    }
-
-//    void insertRec(Entry data) {
-//        root = insertRec(root, data);
-//    }
-//
-//
-//    Node insertRec(Node root, Entry data) {
-//        if (root == null) {
-//            root = new Node(data);
-//            return root;
-//        }
-//
-//        if (data.key < root.data.key) {
-//            root.left = insertRec(root.left, data);
-//        } else if (data.key > root.data.key) {
-//            root.right = insertRec(root.right, data);
-//        }
-//
-//        return root;
-//    }
 
     public Node insertToTree(Entry value) {
         if (root == null) {
@@ -61,7 +38,6 @@ public class Tree {
                 current.right = new Node(value);
                 return current.right;
             } else {
-                // Both children are not null, so add them to the list for further exploration
                 list.add(current.left);
                 list.add(current.right);
             }
@@ -107,7 +83,7 @@ public class Tree {
         for (int i = 10; i < space; i++) {
             System.out.print(" ");
         }
-        System.out.print(root.data.key + " " + root.data.val + "\n");
+        System.out.print(root.data.key + "\n");
 
         printTreein2D(root.left, space);
     }
@@ -151,47 +127,43 @@ public class Tree {
 //            }
 //        }
 //    }
-    public Node delete(Node root, Entry entry) {
-        int key = entry.key;
-        if (root == null)
-            return null;
-
-        if (root.data.key > key) {
-            root.left = delete(root.left, entry);
-            return root;
-        } else if (root.data.key < key) {
-            root.right = delete(root.right, entry);
-            return root;
-        }
-
-        if (root.left == null) {
-            return root.right;
-        } else if (root.right == null) {
-            Node temp = root.left;
-            return temp;
-        } else {
-
-            Node succParent = root;
-
-            Node succ = root.right;
-            while (succ.left != null) {
-                succParent = succ;
-                succ = succ.left;
-            }
-
-            if (succParent != root)
-                succParent.left = succ.right;
-            else
-                succParent.right = succ.right;
-
-            root.data.key = succ.data.key;
-
-            return root;
-        }
+    public Node delete(Entry entry) {
+        root = deleteNode(root, entry);
+        return root;
     }
 
-    public Node delete(Entry entry){
-        return delete(root, entry);
+    private Node deleteNode(Node root, Entry entry) {
+        if (root == null) {
+            return null;
+        }
+
+        if (equals(root.data, entry)) {
+            if (root.left == null && root.right == null) {
+                return null;
+            }
+            if (root.left == null) {
+                return root.right;
+            }
+            if (root.right == null) {
+                return root.left;
+            }
+            root.data = minValue(root.right);
+
+            root.right = deleteNode(root.right, root.data);
+        } else {
+            root.left = deleteNode(root.left, entry);
+            root.right = deleteNode(root.right, entry);
+        }
+        return root;
+    }
+
+    private Entry minValue(Node root) {
+        Entry minValue = root.data;
+        while (root.left != null) {
+            minValue = root.left.data;
+            root = root.left;
+        }
+        return minValue;
     }
 
     private Node findNode(Node node, Entry entry){
@@ -213,7 +185,7 @@ public class Tree {
 
     }
 
-    private boolean equals(Entry e1, Entry e2){
+    protected boolean equals(Entry e1, Entry e2){
         return (e1.key == e2.key && e1.val == e2.val);
     }
 
