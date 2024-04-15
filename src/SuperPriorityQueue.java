@@ -69,4 +69,12 @@ public class SuperPriorityQueue extends Heap {
     public int replaceVal(Entry entry, int key){
         return replaceValfromHeap(entry, key);
     }
+
+    public Entry removeTop(){
+        return removeNode(root.data);
+    }
+
+    public Entry remove(Entry entry){
+        return removeNode(entry);
+    }
 }
