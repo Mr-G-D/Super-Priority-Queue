@@ -4,7 +4,15 @@ import Helpers.*;
  * @author DINESH KUMAR
  */
 
+/**
+ * Main class to test the SuperPriorityQueue
+
+ */
 public class Main {
+    /**
+     * Main method to test the SuperPriorityQueue
+     * @param args command line arguments
+     */
     public static void main(String[] args) {
         SuperPriorityQueue heap = new SuperPriorityQueue("minheap");
 

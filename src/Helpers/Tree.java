@@ -4,6 +4,7 @@ import Helpers.DoublyLinkedListQueue;
 
 /**
  * @author DINESH KUMAR
+ * Tree is a helper class to implement Tree
  */
 public class Tree {
 
@@ -11,11 +12,19 @@ public class Tree {
     protected Node root;
     protected int size;
 
+    /**
+     * Constructor to initialize Tree
+     */
     public Tree() {
         root = null; size = 0;
     }
 
 
+    /**
+     * Insert a node to the Tree
+     * @param value Entry to be added to the Tree
+     * @return Node added to the Tree
+     */
     public Node insertToTree(Entry value) {
         if (root == null) {
             size++;
@@ -46,6 +55,11 @@ public class Tree {
         return null;
     }
 
+    /**
+     * Get the parent of a Node
+     * @param node Node whose parent is to be found
+     * @return Parent of the Node
+     */
     Node getParent(Node node) {
         if (node == null || node == root) {
             return null;
@@ -66,10 +80,18 @@ public class Tree {
         return null;
     }
 
+    /**
+     * Print the Tree in 2D
+     */
     public void printTreein2D() {
         printTreein2D(root, 0);
     }
 
+    /**
+     * Print the Tree in 2D
+     * @param root Node to be printed
+     * @param space Space to be added
+     */
     void printTreein2D(Node root, int space) {
         if (root == null) {
             return;
@@ -88,6 +110,11 @@ public class Tree {
         printTreein2D(root.left, space);
     }
 
+    /**
+     * Swap two nodes
+     * @param n1 Node 1
+     * @param n2 Node 2
+     */
     private void swap(Node n1, Node n2){
         Entry entry = n1.data;
         n1.data = n2.data;
@@ -127,45 +154,13 @@ public class Tree {
 //            }
 //        }
 //    }
-    public Node delete(Entry entry) {
-        root = deleteNode(root, entry);
-        return root;
-    }
 
-    private Node deleteNode(Node root, Entry entry) {
-        if (root == null) {
-            return null;
-        }
-
-        if (equals(root.data, entry)) {
-            if (root.left == null && root.right == null) {
-                return null;
-            }
-            if (root.left == null) {
-                return root.right;
-            }
-            if (root.right == null) {
-                return root.left;
-            }
-            root.data = minValue(root.right);
-
-            root.right = deleteNode(root.right, root.data);
-        } else {
-            root.left = deleteNode(root.left, entry);
-            root.right = deleteNode(root.right, entry);
-        }
-        return root;
-    }
-
-    private Entry minValue(Node root) {
-        Entry minValue = root.data;
-        while (root.left != null) {
-            minValue = root.left.data;
-            root = root.left;
-        }
-        return minValue;
-    }
-
+    /**
+     * find the node in the tree
+     * @param node Node to be searched
+     * @param entry Entry to be searched
+     * @return Node found in the tree
+     */
     private Node findNode(Node node, Entry entry){
         if(node == null || equals(node.data, entry)){
             return node;
@@ -185,10 +180,21 @@ public class Tree {
 
     }
 
+    /**
+     * Check if two entries are equal
+     * @param e1 Entry 1
+     * @param e2 Entry 2
+     * @return true if equal, false otherwise
+     */
     protected boolean equals(Entry e1, Entry e2){
         return (e1.key == e2.key && e1.val == e2.val);
     }
 
+    /**
+     * Find the node in the tree
+     * @param entry Entry to be searched
+     * @return Node found in the tree
+     */
     protected Node find( Entry entry){
         return findNode(root, entry);
     }

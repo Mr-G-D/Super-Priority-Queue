@@ -2,6 +2,9 @@ package Helpers;
 
 /**
  * @author DINESH KUMAR
+ * Heap is a helper class to implement Heap
+ * It extends Tree class
+ *
  */
  public class Heap extends Tree {
 
@@ -10,12 +13,20 @@ package Helpers;
     protected boolean isMinHeap;
 
 
+    /**
+     * Constructor to initialize Heap
+     * @param heap Type of Heap
+     */
     public Heap(String heap){
         super();
         isMinHeap = heap.equalsIgnoreCase(MINHEAP);
     }
 
 
+    /**
+     * Insert a node to the Heap
+     * @param data Entry to be added to the Heap
+     */
     public void insert(Entry data){
         Node node = insertToTree(data);
         if(node != null){
@@ -23,6 +34,9 @@ package Helpers;
         }
     }
 
+    /**
+     * Print the Heap in BFS order
+     */
     public void printBFS() {
         if (root == null) return;
 
@@ -45,6 +59,12 @@ package Helpers;
         }
     }
 
+    /**
+     * return boolean value based on the type of Heap
+     * @param node Node to be compared
+     * @param parent Parent Node
+     * @return boolean value based on the type of Heap
+     */
     private boolean isTrue(Node node, Node parent){
         if(!isMinHeap){
             return node.data.key > parent.data.key;
@@ -53,6 +73,10 @@ package Helpers;
         }
     }
 
+    /**
+     * Heapify the Heap
+     * @param node Node to be heapified
+     */
     private void heapify(Node node) {
         Node parent = getParent(node);
         while (parent != null && isTrue(node, parent)) {
@@ -64,10 +88,18 @@ package Helpers;
             parent = getParent(node);
         }
     }
+
+    /**
+     * Heapify the Heap from the root
+     */
     public void heapifyDownFromRoot() {
         heapifyDownFrom(root);
     }
 
+    /**
+     * Heapify the Heap from the given Node
+     * @param root Node to be heapified
+     */
     private void heapifyDownFrom(Node root) {
         Node current = root;
 
@@ -119,6 +151,10 @@ package Helpers;
 //        return delete(node.data);
 //    }
 
+    /**
+     * Find the last Node in the Heap
+     * @return Last Node in the Heap
+     */
     private Node findLastNode(){
         if (root == null) return null;
 
@@ -141,6 +177,12 @@ package Helpers;
         return root.left;
 
     }
+
+    /**
+     * remove a node from the Heap
+     * @param entry Entry to be removed
+     * @return Entry removed from the Heap
+     */
     public Entry removeNode(Entry entry){
         Node src = findLastNode();
 
@@ -170,6 +212,12 @@ package Helpers;
         return entry;
     }
 
+    /**
+     * Replace the key of the Entry in the Heap
+     * @param entry Entry to be replaced
+     * @param key Key to be replaced
+     * @return old Key in the Heap
+     */
     protected int replaceKeyfromHeap(Entry entry, int key){
         Node node = find(entry);
         if(node != null){
@@ -186,6 +234,13 @@ package Helpers;
         }
         return 0;
     }
+
+    /**
+     * Replace the value of the Entry in the Heap
+     * @param entry Entry to be replaced
+     * @param val Value to be replaced
+     * @return old Value in the Heap
+     */
     protected int replaceValfromHeap(Entry entry, int val){
         Node node = find(entry);
         if(node != null){
