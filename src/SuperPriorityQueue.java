@@ -1,7 +1,9 @@
 import Helpers.*;
 
 /**
- * @author DINESH KUMAR
+ * Assignment 3
+ * COMP 6481
+ * Written by: Dinesh Kumar Gopinathan (40273281) Sanjay Bharathi Subramanian (40248572)
  * SuperPriorityQueue is a class to implement Priority Queue using Heap
  */
 

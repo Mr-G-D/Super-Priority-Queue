@@ -1,7 +1,9 @@
 package Helpers;
 
 /**
- * @author DINESH KUMAR
+ * Assignment 3
+ * COMP 6481
+ * Written by: Dinesh Kumar Gopinathan (40273281) Sanjay Bharathi Subramanian (40248572)
  * Node is a helper class to implement Node of a Tree
  */
 
