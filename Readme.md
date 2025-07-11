@@ -1,4 +1,5 @@
-# **SuperPriorityQueue: A Flexible Priority Queue with Min-Heap and Max-Heap Support**
+# **SuperPriorityQueue:** 
+### A Flexible Priority Queue with Min-Heap and Max-Heap Support
 
 Welcome to the **SuperPriorityQueue** project! This implementation is a highly flexible priority queue that can toggle between a **Min-Heap** and **Max-Heap** structure, offering powerful capabilities for dynamically managing priorities. Whether you're working with small datasets or large-scale priority-based operations, this project provides a robust solution for your queue management needs.
 
@@ -21,13 +22,38 @@ Welcome to the **SuperPriorityQueue** project! This implementation is a highly f
 - **Insertions and Removals**: Insert entries with a key and value, remove the top or a specific entry, and manage priorities efficiently.
 - **Replace Key/Value**: Replace an entry’s priority (key) or its associated value without disrupting the heap's integrity.
 
-### **Entry Class**
-- **Key**: The priority of the entry (used for heap ordering).
-- **Value**: Associated data with the entry, which can be dynamically modified.
+### **Heap**
 
-### **Helper Classes**
-- **DoublyLinkedListQueue**: Used for managing a queue that helps in the breadth-first traversal during heap toggling.
-- **Node**: Represents a node in the heap structure, containing data, left, and right child pointers.
+The **Heap** class forms the core of the priority queue, providing essential functionality for managing the heap structure. It handles operations like:
+- **Heapify**: Ensure that the heap property is maintained after insertions or removals.
+- **Insert and Remove**: Efficient insertion and removal of elements while maintaining the heap’s structure.
+- **Balancing**: After any operation that changes the heap (insertion, removal, or modification), the heap is "rebalanced" to preserve the heap property.
+
+### **Entry**
+
+The **Entry** class represents a single element in the heap. Each entry contains:
+- A **key** (priority), used to determine the order of elements in the heap.
+- A **value**, which is associated with the key but does not affect the ordering in the heap. The value can be updated independently of the key.
+
+### **Node**
+
+The **Node** class represents a node in the binary tree structure used for the heap. Each node contains:
+- A **data** field, which holds an **Entry**.
+- References to its **left** and **right** children, maintaining the structure of the binary tree.
+- A reference to its **parent** (if applicable), helping with heapifying and rebalancing operations.
+
+### **DoublyLinkedListQueue**
+
+The **DoublyLinkedListQueue** is a helper class used for efficiently managing the nodes during heap type toggling. This queue is implemented using a doubly linked list, allowing:
+- **Efficient Additions and Removals**: Nodes are added and removed from both ends of the list in constant time.
+- **BFS Traversal**: The queue supports breadth-first traversal, which is used when toggling between Min-Heap and Max-Heap types. During toggling, the elements are reinserted into the new heap structure using the queue for traversal.
+
+### **Tree**
+
+The **Tree** class provides additional tree-related functionalities, possibly helping with:
+- **Tree Traversals**: Functions like **level-order traversal** (breadth-first search) are used for displaying the heap structure or when performing operations like toggling.
+- **Balancing Operations**: If needed, this class can help with ensuring the tree structure of the heap is properly maintained after various operations.
+
 
 ---
 
